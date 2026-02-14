@@ -5,22 +5,58 @@
       "espada-mod-prueba:viking_grunt"
     ]
   },
-    "viking_death": {
-        "subtitle": "subtitles.espada-mod-prueba.viking_death",
-        "sounds": [
-        "espada-mod-prueba:viking_death"
-        ]
-    },
-    "viking_ambient": {
-        "subtitle": "subtitles.espada-mod-prueba.viking_ambient",
-        "sounds": [
-        "espada-mod-prueba:viking_ambient"
-        ]
-    },
-  "viking_ambient_2": {
-    "subtitle": "subtitles.espada-mod-prueba.viking_ambient_2",
+  "viking_death": {
+    "subtitle": "subtitles.espada-mod-prueba.viking_death",
     "sounds": [
-      "espada-mod-prueba:viking_ambient_2"
+      "espada-mod-prueba:viking_death"
+    ]
+  },
+  "viking_ambient": {
+    "subtitle": "subtitles.espada-mod-prueba.viking_ambient",
+    "sounds": [
+      "espada-mod-prueba:viking_ambient"
+    ]
+  },
+  "viking_angry": {
+    "subtitle": "subtitles.espada-mod-prueba.viking_angry",
+    "sounds": [
+      "espada-mod-prueba:viking_angry"
+    ]
+  },
+  "viking_admiring": {
+    "subtitle": "subtitles.espada-mod-prueba.viking_admiring",
+    "sounds": [
+      "espada-mod-prueba:viking_admiring"
+    ]
+  },
+  "viking_celebrate": {
+    "subtitle": "subtitles.espada-mod-prueba.viking_celebrate",
+    "sounds": [
+      "espada-mod-prueba:viking_celebrate"
+    ]
+  },
+  "viking_jealous": {
+    "subtitle": "subtitles.espada-mod-prueba.viking_jealous",
+    "sounds": [
+      "espada-mod-prueba:viking_jealous"
+    ]
+  },
+  "viking_retreat": {
+    "subtitle": "subtitles.espada-mod-prueba.viking_retreat",
+    "sounds": [
+      "espada-mod-prueba:viking_retreat"
+    ]
+  },
+  "viking_hurt": {
+    "subtitle": "subtitles.espada-mod-prueba.viking_hurt",
+    "sounds": [
+      "espada-mod-prueba:viking_hurt"
+    ]
+  },
+  "viking_attack": {
+    "subtitle": "subtitles.espada-mod-prueba.viking_attack",
+    "sounds": [
+      "espada-mod-prueba:viking_attack"
     ]
   }
 }
