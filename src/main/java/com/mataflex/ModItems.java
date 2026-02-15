@@ -36,6 +36,8 @@ public class ModItems {
     public static final Item MYSTICAL_ESSENCE = register("mystical_essence", Item::new,
             new Item.Properties().food(REGENERATION_FOOD_COMPONENT, REGENARATION_FOOD_CONSUMABLE_COMPONENT));
 
+    public static final Item MYSTICAL_INGOT = register("mystical_ingot", Item::new, new Item.Properties());
+
     // MYSTICAL TOOL MATERIAL
     public static final ToolMaterial MYSTICAL_TOOL_MATERIAL = new ToolMaterial(
             BlockTags.INCORRECT_FOR_WOODEN_TOOL,
@@ -65,6 +67,12 @@ public class ModItems {
             new Item.Properties().pickaxe(MYSTICAL_TOOL_MATERIAL, 4.5f, -2.8f)
     );
 
+    public static final Item MYSTICAL_SHIOVEL = register (
+            "mystical_shovel",
+            Item::new,
+            new Item.Properties().shovel(MYSTICAL_TOOL_MATERIAL, 4.5f, -3.0f)
+    );
+
     public static <GenericItem extends Item> GenericItem register(String name, Function<Item.Properties, GenericItem> itemFactory, Item.Properties settings) {
         // Create the item key.
         ResourceKey<Item> itemKey = ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(EspadaModPrueba.MOD_ID, name));
@@ -81,14 +89,18 @@ public class ModItems {
     public static void initialize() {
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS)
                 .register((itemGroup) -> itemGroup.accept(ModItems.SUSPICIOUS_SUBSTANCE));
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FOOD_AND_DRINKS)
+                .register((itemGroup) -> itemGroup.accept(ModItems.MYSTICAL_ESSENCE));
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.INGREDIENTS)
+                .register((itemGroup) -> itemGroup.accept(ModItems.MYSTICAL_INGOT));
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.COMBAT)
                 .register((itemGroup) -> itemGroup.accept(ModItems.MYSTICAL_SWORD));
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.COMBAT)
                 .register((itemGroup) -> itemGroup.accept(ModItems.MYSTICAL_AXE));
         ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.TOOLS_AND_UTILITIES)
                 .register((itemGroup) -> itemGroup.accept(ModItems.MYSTICAL_PICKAXE));
-        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.FOOD_AND_DRINKS)
-                .register((itemGroup) -> itemGroup.accept(ModItems.MYSTICAL_ESSENCE));
+        ItemGroupEvents.modifyEntriesEvent(CreativeModeTabs.TOOLS_AND_UTILITIES)
+                .register((itemGroup) -> itemGroup.accept(ModItems.MYSTICAL_SHIOVEL));
     }
 
 }
