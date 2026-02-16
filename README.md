@@ -6,8 +6,7 @@
 
 **Fabric:** At least 0.18.4
 
-Mystical Objects, Vikings and more to be added in the future.
-
+This mod adds a new mob: Mystical Vikings. They have overpowered weapons and tools you should try to get by farming a lot of Mystical Vikings.
 
 ## Releases
 ### Github
