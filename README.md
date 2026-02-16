@@ -1,4 +1,5 @@
-## Valhalla Echoes | Designed for Fabric
+## <img width="300" height="80" alt="valhalla_echoes_logo (1)" src="https://github.com/user-attachments/assets/aa428357-99c9-40b7-a425-e0331bdfe85f" /> 
+### Designed for Minecraft Java & Fabric
 
 **Minecraft:** Java version 1.21.11
 
