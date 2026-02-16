@@ -1,4 +1,5 @@
-## <img width="300" height="80" alt="valhalla_echoes_logo (1)" src="https://github.com/user-attachments/assets/aa428357-99c9-40b7-a425-e0331bdfe85f" /> 
+## <img width="300" height="80" alt="valhalla_echoes_logo (2)" src="https://github.com/user-attachments/assets/77455593-a013-414d-bede-e5255db863f9" />
+
 ### Designed for Minecraft Java & Fabric
 
 **Minecraft:** Java version 1.21.11
