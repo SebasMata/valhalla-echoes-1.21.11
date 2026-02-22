@@ -1,4 +1,4 @@
-package com.mataflex.item;
+package com.mataflex.item.custom;
 
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;

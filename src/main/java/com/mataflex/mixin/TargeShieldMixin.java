@@ -1,6 +1,6 @@
 package com.mataflex.mixin;
 
-import com.mataflex.item.TargeShieldItem;
+import com.mataflex.item.custom.TargeShieldItem;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;

@@ -21,7 +21,7 @@ public class ModCreativeTabs {
         Registry.register(
                 BuiltInRegistries.CREATIVE_MODE_TAB,
                 MYSTICAL_TAB,
-                CreativeModeTab.builder(CreativeModeTab.Row.TOP, 7) // Columna 7 (después de las vanilla)
+                CreativeModeTab.builder(CreativeModeTab.Row.TOP, 7)
                         .title(Component.translatable("itemGroup.tumodid.mystical_tab"))
                         .icon(() -> new ItemStack(ModItems.MYSTICAL_SWORD))
                         .displayItems((itemDisplayParameters, output) -> {
@@ -35,6 +35,10 @@ public class ModCreativeTabs {
                             output.accept(ModItems.MYSTICAL_SHOVEL);
                             output.accept(ModItems.RUNIC_GEM);
                             output.accept(ModItems.TARGE_SHIELD);
+                            output.accept(ModItems.MYSTICAL_HELMET);
+                            output.accept(ModItems.MYSTICAL_CHESTPLATE);
+                            output.accept(ModItems.MYSTICAL_LEGGINGS);
+                            output.accept(ModItems.MYSTICAL_BOOTS);
                         })
                         .build()
         );

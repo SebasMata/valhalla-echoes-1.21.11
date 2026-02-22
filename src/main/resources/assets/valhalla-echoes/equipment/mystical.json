@@ -1,0 +1,14 @@
+{
+  "layers": {
+    "humanoid": [
+      {
+        "texture": "valhalla-echoes:mystical"
+      }
+    ],
+    "humanoid_leggings": [
+      {
+        "texture": "valhalla-echoes:mystical"
+      }
+    ]
+  }
+}

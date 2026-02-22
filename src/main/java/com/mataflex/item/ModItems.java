@@ -1,6 +1,8 @@
 package com.mataflex.item;
 
 import com.mataflex.ValhallaEchoes;
+import com.mataflex.item.custom.MysticalShovelItem;
+import com.mataflex.item.custom.TargeShieldItem;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -15,6 +17,8 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.component.Consumables;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
+import net.minecraft.world.item.equipment.ArmorType;
+
 import java.util.function.Function;
 
 public class ModItems {
@@ -103,6 +107,43 @@ public class ModItems {
             TargeShieldItem::new,
             new Item.Properties()
                     .durability(500)
+                    .rarity(Rarity.EPIC)
+    );
+
+    // ARMOR
+    public static final Item MYSTICAL_HELMET = register(
+            "mystical_helmet",
+            Item::new,
+            new Item.Properties()
+                    .humanoidArmor(ModArmorMaterials.MYSTICAL, ArmorType.HELMET)
+                    .durability(2048)
+                    .rarity(Rarity.EPIC)
+    );
+
+    public static final Item MYSTICAL_CHESTPLATE = register(
+            "mystical_chestplate",
+            Item::new,
+            new Item.Properties()
+                    .humanoidArmor(ModArmorMaterials.MYSTICAL, ArmorType.CHESTPLATE)
+                    .durability(2048)
+                    .rarity(Rarity.EPIC)
+    );
+
+    public static final Item MYSTICAL_LEGGINGS = register(
+            "mystical_leggings",
+            Item::new,
+            new Item.Properties()
+                    .humanoidArmor(ModArmorMaterials.MYSTICAL, ArmorType.LEGGINGS)
+                    .durability(2048)
+                    .rarity(Rarity.EPIC)
+    );
+
+    public static final Item MYSTICAL_BOOTS = register(
+            "mystical_boots",
+            Item::new,
+            new Item.Properties()
+                    .humanoidArmor(ModArmorMaterials.MYSTICAL, ArmorType.BOOTS)
+                    .durability(2048)
                     .rarity(Rarity.EPIC)
     );
 
