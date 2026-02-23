@@ -106,7 +106,7 @@ public class ModItems {
             "targe_shield",
             TargeShieldItem::new,
             new Item.Properties()
-                    .durability(500)
+                    .durability(1024)
                     .rarity(Rarity.EPIC)
     );
 
