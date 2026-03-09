@@ -1,6 +1,8 @@
 package com.mataflex.item;
 
 import com.mataflex.ValhallaEchoes;
+import com.mataflex.item.custom.MysticalShovelItem;
+import com.mataflex.item.custom.TargeShieldItem;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -10,15 +12,13 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.food.FoodProperties;
-import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.SpawnEggItem;
-import net.minecraft.world.item.ToolMaterial;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.Consumable;
 import net.minecraft.world.item.component.Consumables;
 import net.minecraft.world.item.consume_effects.ApplyStatusEffectsConsumeEffect;
+import net.minecraft.world.item.equipment.ArmorType;
+
 import java.util.function.Function;
 
 public class ModItems {
@@ -35,13 +35,13 @@ public class ModItems {
             .build();
 
     public static final Item MYSTICAL_ESSENCE = register("mystical_essence", Item::new,
-            new Item.Properties().food(REGENERATION_FOOD_COMPONENT, REGENARATION_FOOD_CONSUMABLE_COMPONENT));
+            new Item.Properties().food(REGENERATION_FOOD_COMPONENT, REGENARATION_FOOD_CONSUMABLE_COMPONENT).rarity(Rarity.EPIC));
 
-    public static final Item MYSTICAL_INGOT = register("mystical_ingot", Item::new, new Item.Properties());
+    public static final Item MYSTICAL_INGOT = register("mystical_ingot", Item::new, new Item.Properties().rarity(Rarity.EPIC));
 
-    public static final Item OBSIDIAN_ROD = register("obsidian_rod", Item::new, new Item.Properties());
+    public static final Item OBSIDIAN_ROD = register("obsidian_rod", Item::new, new Item.Properties().rarity(Rarity.EPIC));
 
-    public static final Item RUNIC_GEM = register("runic_gem", Item::new, new Item.Properties());
+    public static final Item RUNIC_GEM = register("runic_gem", Item::new, new Item.Properties().rarity(Rarity.EPIC));
 
     public static final SpawnEggItem VIKING_SPAWN_EGG = register(
             "viking_spawn_egg",
@@ -52,7 +52,7 @@ public class ModItems {
     // MYSTICAL TOOL MATERIAL
     public static final ToolMaterial MYSTICAL_TOOL_MATERIAL = new ToolMaterial(
             BlockTags.INCORRECT_FOR_WOODEN_TOOL,
-            16384,
+            8192,
             20F,
             1.5F,
             15,
@@ -64,24 +64,28 @@ public class ModItems {
             "mystical_sword",
             Item::new,
             new Item.Properties().sword(MYSTICAL_TOOL_MATERIAL, 15f, -2.0f)
+                    .rarity(Rarity.EPIC)
     );
 
     public static final Item MYSTICAL_AXE = register (
             "mystical_axe",
             Item::new,
             new Item.Properties().axe(MYSTICAL_TOOL_MATERIAL, 18.5f, -3.0f)
+                    .rarity(Rarity.EPIC)
     );
 
     public static final Item MYSTICAL_PICKAXE = register (
             "mystical_pickaxe",
             Item::new,
             new Item.Properties().pickaxe(MYSTICAL_TOOL_MATERIAL, 4.5f, -2.8f)
+                    .rarity(Rarity.EPIC)
     );
 
-    public static final Item MYSTICAL_SHOVEL = register (
+    public static final Item MYSTICAL_SHOVEL = register(
             "mystical_shovel",
-            Item::new,
-            new Item.Properties().shovel(MYSTICAL_TOOL_MATERIAL, 4.5f, -3.0f)
+            properties -> new MysticalShovelItem(MYSTICAL_TOOL_MATERIAL, 4.5f, -3.0f, properties),
+            new Item.Properties()
+                    .rarity(Rarity.EPIC)
     );
 
     public static <GenericItem extends Item> GenericItem register(String name, Function<Item.Properties, GenericItem> itemFactory, Item.Properties settings) {
@@ -102,7 +106,54 @@ public class ModItems {
             "targe_shield",
             TargeShieldItem::new,
             new Item.Properties()
-                    .durability(500)
+                    .durability(1024)
+                    .rarity(Rarity.EPIC)
+    );
+
+    // ARMOR
+    public static final Item MYSTICAL_HELMET = register(
+            "mystical_helmet",
+            Item::new,
+            new Item.Properties()
+                    .humanoidArmor(ModArmorMaterials.MYSTICAL, ArmorType.HELMET)
+                    .durability(2048)
+                    .rarity(Rarity.EPIC)
+    );
+
+    public static final Item MYSTICAL_CHESTPLATE = register(
+            "mystical_chestplate",
+            Item::new,
+            new Item.Properties()
+                    .humanoidArmor(ModArmorMaterials.MYSTICAL, ArmorType.CHESTPLATE)
+                    .durability(2048)
+                    .rarity(Rarity.EPIC)
+    );
+
+    public static final Item MYSTICAL_LEGGINGS = register(
+            "mystical_leggings",
+            Item::new,
+            new Item.Properties()
+                    .humanoidArmor(ModArmorMaterials.MYSTICAL, ArmorType.LEGGINGS)
+                    .durability(2048)
+                    .rarity(Rarity.EPIC)
+    );
+
+    public static final Item MYSTICAL_BOOTS = register(
+            "mystical_boots",
+            Item::new,
+            new Item.Properties()
+                    .humanoidArmor(ModArmorMaterials.MYSTICAL, ArmorType.BOOTS)
+                    .durability(2048)
+                    .rarity(Rarity.EPIC)
+    );
+
+    public static final Item HORNED_HELMET = register(
+            "horned_helmet",
+            Item::new,
+            new Item.Properties()
+                    .humanoidArmor(ModArmorMaterials.MYSTICAL, ArmorType.HELMET)
+                    .durability(2048)
+                    .rarity(Rarity.EPIC)
     );
 
     public static void initialize() {
