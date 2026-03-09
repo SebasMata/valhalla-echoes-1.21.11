@@ -35,6 +35,13 @@ public class MysticalVikingEntity extends Piglin {
     @Override
     public void populateDefaultEquipmentSlots(RandomSource randomSource, @NonNull DifficultyInstance difficultyInstance) {
         this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(randomSource.nextInt(20) == 0 ? ModItems.MYSTICAL_SWORD : ModItems.MYSTICAL_AXE));
+
+        ItemStack helmet = randomSource.nextFloat() < 0.35F
+                ? new ItemStack(ModItems.HORNED_HELMET)
+                : ItemStack.EMPTY;
+
+        this.setItemSlot(EquipmentSlot.HEAD, helmet);
+
     }
 
     @Override

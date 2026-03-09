@@ -15,18 +15,17 @@ public class MysticalVikingRenderer extends PiglinRenderer {
                     "textures/entity/mystical_viking.png"
             );
 
-    public MysticalVikingRenderer(EntityRendererProvider.Context ctx) {
+    public MysticalVikingRenderer(EntityRendererProvider.Context context) {
         super(
-                ctx,
-                ModelLayers.ZOMBIFIED_PIGLIN,           // ModelLayer para piglin zombie
-                ModelLayers.ZOMBIFIED_PIGLIN_BABY, // Capa interior de armadura
-                ModelLayers.ZOMBIFIED_PIGLIN_BABY_ARMOR, // Capa exterior de armadura
-                ModelLayers.ZOMBIFIED_PIGLIN_ARMOR
+                context,
+                ModelLayers.PIGLIN_BABY,
+                ModelLayers.PIGLIN,
+                ModelLayers.PIGLIN_BABY_ARMOR,
+                ModelLayers.PIGLIN_ARMOR
         );
     }
 
     @Override
     public Identifier getTextureLocation(PiglinRenderState renderState) {
         return TEXTURE;
-    }
-}
+    }}
