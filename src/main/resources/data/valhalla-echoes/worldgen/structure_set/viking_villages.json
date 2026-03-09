@@ -1,0 +1,15 @@
+{
+  "structures": [
+    {
+      "structure": "valhalla-echoes:viking_village",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 10,
+    "separation": 5,
+    "salt": 123456789,
+    "spread_type": "linear"
+  }
+}
