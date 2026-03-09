@@ -4,6 +4,7 @@
 ### Entidades
 - [ ] Gestionar spawneo de Vikingos - **Alta prioridad**
 - [ ] Draugr (similar a Wither Skeleton)
+- [ ] Bioma nuevo de vikingos (similar a Taiga)
 
 ### Estructuras
 - [ ] Aldeas de vikingos - **Alta prioridad**
