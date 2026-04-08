@@ -4,15 +4,21 @@ import com.mataflex.entity.MysticalVikingEntity;
 import com.mataflex.item.ModItems;
 import com.mataflex.sound.CustomSounds;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
+import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.Identifier;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
+import net.minecraft.world.entity.SpawnPlacementTypes;
+import net.minecraft.world.entity.SpawnPlacements;
 import net.minecraft.world.entity.monster.piglin.Piglin;
+import net.minecraft.world.level.levelgen.Heightmap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -48,6 +54,22 @@ public class ValhallaEchoes implements ModInitializer {
 		);
 
 		CustomSounds.initialize();
+
+		SpawnPlacements.register(
+				MYSTICAL_VIKING,
+				SpawnPlacementTypes.ON_GROUND,
+				Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+				MysticalVikingEntity::checkVikingSpawnRules
+		);
+
+		BiomeModifications.addSpawn(
+				BiomeSelectors.tag(BiomeTags.IS_TAIGA).or(BiomeSelectors.tag(BiomeTags.IS_MOUNTAIN)),
+				MobCategory.MONSTER,
+				MYSTICAL_VIKING,
+				45,
+				1,
+				3
+		);
 
 	}
 

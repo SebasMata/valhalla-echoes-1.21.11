@@ -1,6 +1,8 @@
 package com.mataflex.mixin;
 
+import com.mataflex.item.ModItems;
 import com.mataflex.item.custom.TargeShieldItem;
+import com.mataflex.sound.CustomSounds;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -22,6 +24,17 @@ public abstract class TargeShieldMixin {
 
 		if ((Object) this instanceof Player player) {
 
+			ItemStack helmet = player.getItemBySlot(EquipmentSlot.HEAD);
+
+			if (helmet.is(ModItems.HORNED_HELMET) && source.getDirectEntity() instanceof LivingEntity attacker) {
+
+				if (player.getRandom().nextFloat() < 0.85f) {
+					attacker.hurtServer(level, level.damageSources().thorns(player), 3.0f);
+					level.playSound(null, player.getX(), player.getY(), player.getZ(),
+							CustomSounds.HORNED_HELMET_STAB, SoundSource.PLAYERS, 1.0F, 1.0F);
+				}
+			}
+
 			ItemStack mainHand = player.getMainHandItem();
 			ItemStack offHand = player.getOffhandItem();
 			ItemStack shieldStack = (mainHand.getItem() instanceof TargeShieldItem) ? mainHand :
@@ -32,7 +45,7 @@ public abstract class TargeShieldMixin {
 				int useTicks = player.getTicksUsingItem();
 
 				if (useTicks <= 5) {
-					// --- PARRY PERFECTO ---
+					// PARRY PERFECTO
 					level.playSound(null, player.getX(), player.getY(), player.getZ(),
 							SoundEvents.MACE_SMASH_GROUND, SoundSource.PLAYERS, 1.5F, 1.0F);
 
@@ -42,7 +55,7 @@ public abstract class TargeShieldMixin {
 					cir.setReturnValue(false);
 
 				} else {
-					// --- BLOQUEO NORMAL ---
+					// BLOQUEO NORMAL
 					level.playSound(null, player.getX(), player.getY(), player.getZ(),
 							SoundEvents.SHIELD_BLOCK, SoundSource.PLAYERS, 1.0F, 1.0F);
 

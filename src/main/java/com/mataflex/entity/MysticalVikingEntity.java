@@ -12,13 +12,18 @@ import net.minecraft.util.profiling.Profiler;
 import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.ai.Brain;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.piglin.Piglin;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 import org.jspecify.annotations.NonNull;
@@ -33,11 +38,10 @@ public class MysticalVikingEntity extends Piglin {
     }
 
     @Override
-    protected void populateDefaultEquipmentSlots(net.minecraft.util.RandomSource randomSource, net.minecraft.world.DifficultyInstance difficultyInstance) {
+    protected void populateDefaultEquipmentSlots(net.minecraft.util.RandomSource randomSource, net.minecraft.world.@NonNull DifficultyInstance difficultyInstance) {
         this.setItemSlot(net.minecraft.world.entity.EquipmentSlot.MAINHAND, new net.minecraft.world.item.ItemStack(randomSource.nextInt(20) == 0 ? com.mataflex.item.ModItems.MYSTICAL_SWORD : com.mataflex.item.ModItems.MYSTICAL_AXE));
 
         if (!this.isBaby() && randomSource.nextFloat() < 0.35F) {
-            System.out.println(this.isBaby());
             this.setItemSlot(net.minecraft.world.entity.EquipmentSlot.HEAD, new net.minecraft.world.item.ItemStack(com.mataflex.item.ModItems.HORNED_HELMET));
         } else {
             this.setItemSlot(net.minecraft.world.entity.EquipmentSlot.HEAD, net.minecraft.world.item.ItemStack.EMPTY);
@@ -72,7 +76,6 @@ public class MysticalVikingEntity extends Piglin {
         @SuppressWarnings("unchecked")
         Brain<MysticalVikingEntity> vikingBrain = (Brain<MysticalVikingEntity>) (Brain<?>) piglinBrain;
 
-        // GUARDAR PARA DESPUÉS
         this.mysticalVikingBrain = vikingBrain;
 
         return MysticalVikingAi.makeBrain(vikingBrain);
@@ -83,7 +86,7 @@ public class MysticalVikingEntity extends Piglin {
         ProfilerFiller profilerFiller = Profiler.get();
         profilerFiller.push("mysticalVikingBrain");
 
-        this.getMysticalBrain().tick(serverLevel, this);  // CAMBIADO
+        this.getMysticalBrain().tick(serverLevel, this);
 
         profilerFiller.pop();
 
@@ -92,12 +95,10 @@ public class MysticalVikingEntity extends Piglin {
         super.customServerAiStep(serverLevel);
     }
 
-    // Versión simplificada de getAmbientSound
     @Override
     protected @Nullable SoundEvent getAmbientSound() {
         if (this.level().isClientSide()) return null;
 
-        // Delegar en nuestra AI para todos los sonidos ambientales
         return MysticalVikingAi.getSoundForCurrentActivity(this).orElse(null);
     }
 
@@ -123,6 +124,30 @@ public class MysticalVikingEntity extends Piglin {
             this.mysticalVikingBrain = brain;
         }
         return this.mysticalVikingBrain;
+    }
+
+    public static boolean checkVikingSpawnRules(EntityType<? extends Monster> type, LevelAccessor world, EntitySpawnReason spawnReason, BlockPos pos, RandomSource random) {
+        return Monster.checkAnyLightMonsterSpawnRules(type, world, spawnReason, pos, random);
+    }
+
+    @Override
+    public boolean checkSpawnObstruction(LevelReader world) {
+        return world.isUnobstructed(this);
+    }
+
+    @Override
+    public @Nullable SpawnGroupData finalizeSpawn(ServerLevelAccessor serverLevelAccessor, @NonNull DifficultyInstance difficultyInstance, @NonNull EntitySpawnReason entitySpawnReason, @Nullable SpawnGroupData spawnGroupData) {
+        RandomSource randomSource = serverLevelAccessor.getRandom();
+
+        if (entitySpawnReason != EntitySpawnReason.STRUCTURE) {
+            if (randomSource.nextFloat() < 0.125F) {
+                this.setBaby(true);
+            }
+        }
+
+        this.populateDefaultEquipmentSlots(randomSource, difficultyInstance);
+
+        return super.finalizeSpawn(serverLevelAccessor, difficultyInstance, entitySpawnReason, spawnGroupData);
     }
 
 }

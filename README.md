@@ -3,7 +3,11 @@
 ## **Designed for Minecraft Java 1.21.11 & Fabric**
 ![Fabric logo](https://cdn.modrinth.com/data/cached_images/513035d1231a86dff137c74e04a5e64633593f10.png)
 
-**Fabric version:** At least 0.18.4
+<img width="640" height="360" alt="fabric" src="https://cdn.modrinth.com/data/cached_images/513035d1231a86dff137c74e04a5e64633593f10.png"/>
+
+
+
+**Minecraft:** Java version 1.21.11
 
 ## Mod Info
 
@@ -32,8 +36,8 @@ You can download the mod directly here:
 
 ### Install guide
 >1) Install the [Fabric modloader](https://fabricmc.net).
->2) Download and put the `valhalla-echoes-v0.x.jar` file into `.minecraft/mods` folder.
->3) You're ready to play!
+>1) Download and put the `valhalla-echoes-v0.x.jar` file into `.minecraft/mods` folder.
+>1) You're ready to play!
 
 ## Notes
 Private project designed to learn how to code Minecraft Mods. Still testing and improving.
